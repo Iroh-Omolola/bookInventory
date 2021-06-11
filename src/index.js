@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import client from './database/index.js';
+import dbClient from './database/index.js';
 import { createBooks, getBooks, updateBooks, deleteBooks } from './queries/index.js';
 
 const app = express();
@@ -9,7 +9,7 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
-client.connect();
+dbClient.connect();
 
 app.get('/', (req, res) => {
   res.json({
